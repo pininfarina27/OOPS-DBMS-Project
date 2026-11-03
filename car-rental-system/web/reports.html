@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Car Rental System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+    <div class="sidebar">
+        <div class="sidebar-header">🚗 Car Rental</div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">📊 Dashboard</a></li>
+                <li><a href="cars.html">🚘 Cars</a></li>
+                <li><a href="customers.html">👥 Customers</a></li>
+                <li><a href="rentals.html">📋 Rentals</a></li>
+                <li><a href="history.html">📜 History</a></li>
+                <li><a href="reports.html">📈 Reports</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Reports & Analytics</h1>
+        </div>
+
+        <div class="reports-grid">
+            <div class="report-card">
+                <div class="report-title">💰 Revenue by Category</div>
+                <div id="revenueByCategoryReport">Loading...</div>
+            </div>
+            <div class="report-card">
+                <div class="report-title">🚗 Popular Cars</div>
+                <div id="popularCarsReport">Loading...</div>
+            </div>
+            <div class="report-card">
+                <div class="report-title">👤 Top Customers</div>
+                <div id="topCustomersReport">Loading...</div>
+            </div>
+            <div class="report-card">
+                <div class="report-title">📅 Monthly Revenue</div>
+                <div id="monthlyRevenueReport">Loading...</div>
+            </div>
+        </div>
+    </div><!-- end main-content -->
+    </div><!-- end app-container -->
+
+    <script src="js/common.js"></script>
+    <script src="js/reports.js"></script>
+</body>
+</html>

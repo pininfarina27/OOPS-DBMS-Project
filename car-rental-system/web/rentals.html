@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentals - Car Rental System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+    <div class="sidebar">
+        <div class="sidebar-header">🚗 Car Rental</div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">📊 Dashboard</a></li>
+                <li><a href="cars.html">🚘 Cars</a></li>
+                <li><a href="customers.html">👥 Customers</a></li>
+                <li><a href="rentals.html">📋 Rentals</a></li>
+                <li><a href="history.html">📜 History</a></li>
+                <li><a href="reports.html">📈 Reports</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Rentals</h1>
+            <button class="btn btn-primary" onclick="openNewRentalModal()">➕ New Rental</button>
+        </div>
+
+        <div class="card">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Customer</th>
+                            <th>Car</th>
+                            <th>License Plate</th>
+                            <th>Daily Rate</th>
+                            <th>Rental Date</th>
+                            <th>Return Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rentalsTableBody">
+                        <tr>
+                            <td colspan="8" style="text-align: center;">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!-- end main-content -->
+    </div><!-- end app-container -->
+
+    <!-- New Rental Modal -->
+    <div class="modal" id="rentalModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Rental</h2>
+                <button class="close-btn" onclick="closeModal('rentalModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="rentalForm">
+                    <div class="form-group">
+                        <label for="rentalCustomer">Customer</label>
+                        <select id="rentalCustomer" required>
+                            <option value="">Select Customer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="rentalCar">Car</label>
+                        <select id="rentalCar" required>
+                            <option value="">Select Car</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rentalDate">Rental Date</label>
+                            <input type="date" id="rentalDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="returnDate">Return Date</label>
+                            <input type="date" id="returnDate" required>
+                        </div>
+                    </div>
+                    <div id="rentalEstimate" style="display: none; padding: 10px; background: #F8FAFC; border-radius: 6px; margin-top: 8px;">
+                        Estimated Cost: ₹0
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" onclick="closeModal('rentalModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Rental</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Return Car Modal -->
+    <div class="modal" id="returnModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Return Car</h2>
+                <button class="close-btn" onclick="closeModal('returnModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="returnInfo"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('returnModal')">Cancel</button>
+                <button class="btn btn-success" id="confirmReturnBtn">Confirm Return</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/rentals.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars - Car Rental System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+    <div class="sidebar">
+        <div class="sidebar-header">🚗 Car Rental</div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">📊 Dashboard</a></li>
+                <li><a href="cars.html">🚘 Cars</a></li>
+                <li><a href="customers.html">👥 Customers</a></li>
+                <li><a href="rentals.html">📋 Rentals</a></li>
+                <li><a href="history.html">📜 History</a></li>
+                <li><a href="reports.html">📈 Reports</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Car Management</h1>
+            <button class="btn btn-primary" onclick="openAddCar()">➕ Add Car</button>
+        </div>
+
+        <div class="toolbar">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search cars...">
+            <select id="statusFilter">
+                <option value="">All Status</option>
+                <option value="AVAILABLE">AVAILABLE</option>
+                <option value="RENTED">RENTED</option>
+                <option value="MAINTENANCE">MAINTENANCE</option>
+            </select>
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+            </select>
+            <select id="sortFilter">
+                <option value="">Default Sort</option>
+                <option value="price-low">Price Low→High</option>
+                <option value="price-high">Price High→Low</option>
+                <option value="newest">Newest First</option>
+                <option value="brand-az">Brand A→Z</option>
+            </select>
+        </div>
+
+        <div class="card">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Brand</th>
+                            <th>Model</th>
+                            <th>Year</th>
+                            <th>License Plate</th>
+                            <th>Category</th>
+                            <th>Color</th>
+                            <th>Daily Rate</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="carsTableBody">
+                        <tr>
+                            <td colspan="10" style="text-align: center;">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!-- end main-content -->
+    </div><!-- end app-container -->
+
+    <!-- Add/Edit Car Modal -->
+    <div class="modal" id="carModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="carModalTitle">Add New Car</h2>
+                <button class="close-btn" onclick="closeModal('carModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="carForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="carCategory">Category</label>
+                            <select id="carCategory" required>
+                                <option value="">Select Category</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="carBrand">Brand</label>
+                            <input type="text" id="carBrand" required placeholder="Enter brand">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="carModel">Model</label>
+                            <input type="text" id="carModel" required placeholder="Enter model">
+                        </div>
+                        <div class="form-group">
+                            <label for="carYear">Year</label>
+                            <input type="number" id="carYear" required min="2000" max="2030" placeholder="Enter year">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="carPlate">License Plate</label>
+                            <input type="text" id="carPlate" required placeholder="Enter license plate">
+                        </div>
+                        <div class="form-group">
+                            <label for="carColor">Color</label>
+                            <input type="text" id="carColor" placeholder="Enter color">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="carRate">Daily Rate (₹)</label>
+                            <input type="number" id="carRate" required min="0" step="50" placeholder="Enter daily rate">
+                        </div>
+                        <div class="form-group">
+                            <label for="carStatus">Status</label>
+                            <select id="carStatus">
+                                <option value="AVAILABLE">AVAILABLE</option>
+                                <option value="RENTED">RENTED</option>
+                                <option value="MAINTENANCE">MAINTENANCE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" id="carId">
+                    <div class="modal-footer">
+                        <button type="button" class="btn" onclick="closeModal('carModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Car</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Delete</h2>
+                <button class="close-btn" onclick="closeModal('deleteModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this car?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('deleteModal')">Cancel</button>
+                <button class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/cars.js"></script>
+</body>
+</html>

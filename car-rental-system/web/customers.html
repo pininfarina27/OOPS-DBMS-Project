@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers - Car Rental System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+    <div class="sidebar">
+        <div class="sidebar-header">🚗 Car Rental</div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">📊 Dashboard</a></li>
+                <li><a href="cars.html">🚘 Cars</a></li>
+                <li><a href="customers.html">👥 Customers</a></li>
+                <li><a href="rentals.html">📋 Rentals</a></li>
+                <li><a href="history.html">📜 History</a></li>
+                <li><a href="reports.html">📈 Reports</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Customer Management</h1>
+            <button class="btn btn-primary" onclick="openRegisterCustomer()">➕ Register Customer</button>
+        </div>
+
+        <div class="toolbar">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search customers...">
+        </div>
+
+        <div class="card">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Registered</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customersTableBody">
+                        <tr>
+                            <td colspan="8" style="text-align: center;">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!-- end main-content -->
+    </div><!-- end app-container -->
+
+    <!-- Add/Edit Customer Modal -->
+    <div class="modal" id="customerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="customerModalTitle">Register Customer</h2>
+                <button class="close-btn" onclick="closeModal('customerModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="customerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" required placeholder="Enter first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" required placeholder="Enter last name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" required placeholder="Enter phone number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" rows="2" placeholder="Enter address"></textarea>
+                    </div>
+                    <input type="hidden" id="customerId">
+                    <div class="modal-footer">
+                        <button type="button" class="btn" onclick="closeModal('customerModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Customer Confirmation Modal -->
+    <div class="modal" id="deleteCustomerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Delete</h2>
+                <button class="close-btn" onclick="closeModal('deleteCustomerModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this customer?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('deleteCustomerModal')">Cancel</button>
+                <button class="btn btn-danger" id="confirmDeleteCustomerBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/customers.js"></script>
+</body>
+</html>
